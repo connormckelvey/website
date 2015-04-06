@@ -1,0 +1,45 @@
+html, body {
+    min-height: 100%;
+    font-family: 'Lora', serif;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+[role=banner] {
+    position: fixed;
+    height: 100%;
+    background: #EFEFEF;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    padding: 1.42105263em;
+    
+}
+
+[role=main] {
+    position: fixed;
+    height: 100%;
+    background: #FFF;
+    width: 65%;
+    left: 35%;
+    overflow: scroll;
+}
+
+article {
+    border-bottom: solid 1px #EEE;
+    padding: 1.42105263em;
+}
+
+article > * {
+    max-width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+}

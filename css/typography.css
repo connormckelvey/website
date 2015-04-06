@@ -1,0 +1,58 @@
+body {
+  font-size: 1.1875em;
+  line-height: 1.421052632em;
+  margin: 0 auto;
+}
+h1 {
+  font-size: 1.947368421em;
+  line-height: 1.45945946em;
+  margin-top: 1.45945946em;
+  margin-bottom: 0.72972973em;
+}
+h2 {
+  font-size: 1.578947368em;
+  line-height: 1.8em;
+  margin-top: 1.8em;
+  margin-bottom: 0.9em;
+}
+h3 {
+  font-size: 1.263157895em;
+  line-height: 1.125em;
+  margin-top: 1.125em;
+  margin-bottom: 1.125em;
+}
+h4 {
+  font-size: 1em;
+  line-height: 1.421052632em;
+  margin-top: 1.42105263em;
+  margin-bottom: 1.42105263em;
+}
+p, ul, ol, pre, table, blockquote {
+  margin-top: 1.42105263em;
+  margin-bottom: 1.42105263em;
+}
+
+/* Sanitation */
+hr {
+  border: 1px solid;
+  margin: -1px 0;
+}
+ul ul, ol ol, ul ol, ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+b, strong, em, small, code {
+  line-height: 1;
+}
+sup, sub {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+}
+sub {
+  top: 0.4em;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Lato', sans-serif;
+}
