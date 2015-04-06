@@ -13,21 +13,36 @@ html {
 [role=banner] {
     position: fixed;
     height: 100%;
-    background: #EFEFEF;
+    /*background: -webkit-linear-gradient(45deg, #5f2c82 10%, #49a09d 90%); */
+    /*background:    -moz-linear-gradient(45deg, #5f2c82 10%, #49a09d 90%); */
+    /*background:     -ms-linear-gradient(45deg, #5f2c82 10%, #49a09d 90%); */
+    /*background:      -o-linear-gradient(45deg, #5f2c82 10%, #49a09d 90%); */
+    /*background:         linear-gradient(45deg, #5f2c82 10%, #49a09d 90%); */
+
+    background: -webkit-linear-gradient(45deg, #C04848 10%, #480048 90%); /* Chrome 10+, Saf5.1+ */
+    background:    -moz-linear-gradient(45deg, #C04848 10%, #480048 90%); /* FF3.6+ */
+    background:     -ms-linear-gradient(45deg, #C04848 10%, #480048 90%); /* IE10 */
+    background:      -o-linear-gradient(45deg, #C04848 10%, #480048 90%); /* Opera 11.10+ */
+    background:         linear-gradient(45deg, #C04848 10%, #480048 90%); /* W3C */
     width: 35%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Lato', sans-serif;
-    text-align: center;
     padding: 1.42105263em;
-    
+    color: #FFF;
+    text-align: center;
+}
+
+[role=banner] .v-center {
+    max-width: 500px;
+
 }
 
 [role=main] {
     position: fixed;
     height: 100%;
-    background: #FFF;
+    background: #ecf0f1;
     width: 65%;
     left: 35%;
     overflow: scroll;
@@ -42,4 +57,18 @@ article > * {
     max-width: 600px;
     margin-right: auto;
     margin-left: auto;
+}
+
+.inline-list {
+    display: flex;
+    max-width: 200px;
+    align-items: center;
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+}
+
+.inline-list li {
+    text-align: center;
+    flex-grow: 1;
 }
