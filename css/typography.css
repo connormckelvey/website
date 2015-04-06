@@ -6,25 +6,21 @@ body {
 h1 {
   font-size: 1.947368421em;
   line-height: 1.45945946em;
-  margin-top: 1.45945946em;
   margin-bottom: 0.72972973em;
 }
 h2 {
   font-size: 1.578947368em;
   line-height: 1.8em;
-  margin-top: 1.8em;
   margin-bottom: 0.9em;
 }
 h3 {
   font-size: 1.263157895em;
   line-height: 1.125em;
-  margin-top: 1.125em;
   margin-bottom: 1.125em;
 }
 h4 {
   font-size: 1em;
   line-height: 1.421052632em;
-  margin-top: 1.42105263em;
   margin-bottom: 1.42105263em;
 }
 p, ul, ol, pre, table, blockquote {
