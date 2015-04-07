@@ -1,0 +1,16 @@
+.inline-list {
+    max-width: 200px;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+
+    li {
+	    text-align: center;
+	    flex-grow: 1;
+        -webkit-flex-grow: 1;
+	}
+}

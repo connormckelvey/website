@@ -1,0 +1,52 @@
+.sub .banner {
+    display: none;
+}
+
+.banner {
+    height: 100%;
+    background: -webkit-linear-gradient(45deg, #5f2c82 10%, #49a09d 90%); 
+    background:    -moz-linear-gradient(45deg, #5f2c82 10%, #49a09d 90%); 
+    background:     -ms-linear-gradient(45deg, #5f2c82 10%, #49a09d 90%); 
+    background:      -o-linear-gradient(45deg, #5f2c82 10%, #49a09d 90%); 
+    background:         linear-gradient(45deg, #5f2c82 10%, #49a09d 90%); 
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    font-family: 'Lato', sans-serif;
+    padding: 1.42105263em;
+    color: #FFF;
+    text-align: center;
+    left: 0;
+    position: static;
+
+    &__block {
+        max-width: 500px;
+    }
+    
+    a {
+        color: #FFF;
+        text-decoration: none;
+    }
+}
+
+
+@media screen and (min-width: 48em) {
+    .sub .banner {
+        display: flex;
+    }
+    .banner {
+        height: 50%;
+    }
+}
+
+@media screen and (min-width: 64em) {
+    .banner {
+        height: 100%;
+        position: fixed;
+        width: 35%;
+    }
+}

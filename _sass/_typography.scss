@@ -1,5 +1,6 @@
 body {
-  font-size: 1.1875em;
+  font-family: 'Lora', serif;
+  font-size: 1em;
   line-height: 1.421052632em;
   margin: 0 auto;
 }
@@ -23,9 +24,13 @@ h4 {
   line-height: 1.421052632em;
   margin-bottom: 1.42105263em;
 }
-p, ul, ol, pre, table, blockquote {
+p, ul, ol, table, blockquote {
   margin-top: 1.42105263em;
   margin-bottom: 1.42105263em;
+}
+
+pre {
+  margin: 0;
 }
 
 /* Sanitation */
@@ -51,4 +56,10 @@ sub {
 
 h1, h2, h3, h4 {
   font-family: 'Lato', sans-serif;
+}
+
+@media screen and (min-width: 64em) {
+    body {
+      font-size: 1.1875em;
+    }
 }

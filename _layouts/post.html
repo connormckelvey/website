@@ -1,0 +1,40 @@
+---
+layout: sub
+values:
+    is_post: true # automatically set is_post=true for all posts
+---
+<div class="back-link">
+	<div class="back-link__wrapper">
+		<a href="{{ site.baseurl }}/"><i class="fa fa-arrow-left"></i> Go Home</a>
+	</div>
+</div>
+<article class="article hentry">
+    <header class="article__header entry-header">
+        <!-- <div class="article__meta entry-meta">
+            <div class="article__categories category-links">
+                {% for category in page.categories %}
+                    <a href="/categories/{{ category }}/" rel="tag">{{ category }}</a>
+                {% endfor %}
+            </div>
+        </div> -->
+        <h1 class="article__title entry-title">
+            {{ page.title }}
+        </h1>
+        <div class="article__meta entry-meta">
+            <div class="article__date entry-date">
+                    <time class="entry-date" datetime="{{ page.date }}">
+                        {{ page.date | date: "%b %-d, %Y" }}
+                    </time>
+            </div>
+            <div class="vcard">
+                <a class="url fn n" href="#" target="_blank" rel="author">Connor McKelvey</a>
+            </div>
+        </div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
+    <div class="article__content entry-content">
+        {{ content }}                    
+    </div><!-- .entry-content -->
+    <footer class="article__footer entry-meta">
+        
+    </footer>
+</article>

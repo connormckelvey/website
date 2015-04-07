@@ -1,0 +1,13 @@
+<header class="banner" role="banner">
+   <div class="banner__block">
+        <h2><a href="{{ site.baseurl }}/">{{ site.title }}</a></h2>
+       <p>I am a front-end developer living in Orlando, FL. I have a thing for Javascript and I love accessibility. </p>
+       <nav role="navigation">
+          <ul class="inline-list">
+            {% for link in site.data.links %}
+              <li><a target="_blank" href="{{ link.url }}"><i class="fa fa-{{ link.icon }}"></i></a></li>
+            {% endfor %}
+           </ul>
+       </nav>
+   </div>
+</header>

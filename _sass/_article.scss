@@ -1,0 +1,55 @@
+.article {
+    border-bottom: solid 1px #EEE;
+    padding: 4.26315789em 1.42105263em; 
+    
+    & > * {
+        max-width: 600px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    a {
+        color: #49a09d;
+    }
+
+    &__header, &__footer {
+        color: #1D2021;
+        font-family: 'Lato', sans-serif;
+    }
+
+    &__meta {
+        font-size: 0.75em;
+    }
+
+    &__categories a {
+        display: inline-block;
+        padding: 0.25em 1.5em;
+        margin-right: 0.25em;
+        background: #95a5a6;
+        color: #FFF;
+        border-radius: 100px;
+        text-decoration: none;
+    }
+
+    &__date {
+        color: #95a5a6;
+    }
+
+    &__content {
+        color: #1D2021;
+    }
+
+    &:nth-of-type(even) {
+        background: rgba(255,255,255, 0.6);
+    }
+}
+
+.category-heading {
+    background: rgba(255,255,255, 0.5);
+    padding: 2.84210526em 1.42105263em;
+
+    & > * {
+        max-width: 600px;
+        margin: auto;
+    }
+}
