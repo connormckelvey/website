@@ -42,6 +42,11 @@
     &:nth-of-type(even) {
         background: rgba(255,255,255, 0.6);
     }
+
+    .full-width {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .category-heading {

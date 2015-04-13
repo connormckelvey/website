@@ -1,14 +1,21 @@
 ---
 layout: default
 ---
-<div class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-  </header>
-
-  <article class="post-content">
-    {{ content }}
-  </article>
-
+<div class="back-link">
+	<div class="back-link__wrapper">
+		<a href="{{ site.baseurl }}/"><i class="fa fa-arrow-left"></i> Go Home</a>
+	</div>
 </div>
+<article class="article hentry">
+    <header class="article__header entry-header">
+        <h1 class="article__title entry-title">
+            {{ page.title }}
+        </h1>
+    </header><!-- .entry-header -->
+    <div class="article__content entry-content">
+        {{ content }}                    
+    </div><!-- .entry-content -->
+    <footer class="article__footer entry-meta">
+        
+    </footer>
+</article>
