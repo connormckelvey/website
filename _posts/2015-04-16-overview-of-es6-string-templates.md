@@ -6,7 +6,7 @@ categories: es6
 ---
 Javascript string templates are a new feature of ECMAScript 6. They bring new (and long sought after) features to string such as variable (and expression) interpolation, white-space preservation and template tagging.
 
-There are some syntactical differences with string templates compared to POS (plain ol' strings).
+There are some syntactical differences with string templates compared to POS (plain ol' strings). 
 
 ###String Interpolation with Variables
 This is perhaps the coolest feature of string templates. String interpolation has been available in languages such as Ruby and PHP for as long as I have been programming. 
