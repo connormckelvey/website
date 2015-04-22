@@ -45,7 +45,7 @@ let name = "Connor";
 let a = 10;
 let b = 20;
 let message = `Good Morning ${first}, would you like ${a + b} cups of coffee?`;
-let time = `What time is it? It is ${new Date().getHours()}:${new Date().getMinutes()}.`
+let time = `What time is it? It is ${new Date().getHours()}:${new Date().getMinutes()}.`;
 console.log(message);
 console.log(time);
 //Good Morning Connor, would you 30 cups of coffee?
@@ -83,10 +83,10 @@ function tag(strings, ...values) {
         values[0] = "Morning";
     }
   
-  return `${strings[0]}${values[0]}${strings[1]}${values[1]}${strings[2]}${values[2]}`
+  return `${strings[0]}${values[0]}${strings[1]}${values[1]}${strings[2]}${values[2]}`;
 }
 
-let message = tag`Good ${""} Connor, the current time is ${new Date().getHours()}:${new Date().getMinutes()}.`
+let message = tag`Good ${""} Connor, the current time is ${new Date().getHours()}:${new Date().getMinutes()}.`;
 console.log(message);
 //Good Afternoon Connor, the current time is 21:40
 {% endhighlight %}

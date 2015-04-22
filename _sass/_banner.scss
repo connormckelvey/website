@@ -37,6 +37,7 @@
 @media screen and (min-width: 48em) {
     .sub .banner {
         display: flex;
+        display: -webkit-flex;
     }
     .banner {
         height: 50%;
