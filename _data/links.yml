@@ -1,11 +1,15 @@
 - icon: github
   url: https://github.com/connormckelvey
+  title: Github 
 
 - icon: twitter
   url: https://twitter.com/cssaddict
+  title: Twitter
 
 - icon: stack-overflow
   url: http://stackoverflow.com/users/413173/connor-finn-mckelvey
+  title: Stack Overflow
 
 - icon: envelope
   url: mailto:connormckelvey@gmail.com
+  title: Email Me

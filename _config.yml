@@ -12,3 +12,6 @@ markdown: kramdown
 exclude:
   - divshot.json
   - divshot-debug.log
+
+sass:
+  style: :compressed
