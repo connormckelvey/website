@@ -5,13 +5,6 @@ layout: default
 {% for post in site.posts %}
    <article class="article hentry">
         <header class="article__header entry-header">
-            <!-- <div class="article__meta entry-meta">
-                <div class="article__categories category-links">
-                    {% for category in post.categories %}
-                        <a href="/categories/{{ category }}/" rel="tag">{{ category }}</a>
-                    {% endfor %}
-                </div>
-            </div> -->
             <h1 class="article__title entry-title">
                 <a href="{{ post.url }}">{{ post.title }}</a>
             </h1>
@@ -27,10 +20,10 @@ layout: default
             </div><!-- .entry-meta -->
         </header><!-- .entry-header -->
         <div class="article__content entry-content">
-            {{ post.excerpt }}                    
+            {{ post.excerpt }}
         </div><!-- .entry-content -->
         <footer class="article__footer entry-meta">
             <a title="{{ post.title }}" class="button" href="{{ post.url }}">Continue Reading</a>
         </footer>
-    </article> 
+    </article>
 {% endfor %}

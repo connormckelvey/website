@@ -13,4 +13,4 @@ The talk is about 30 minutes long but I encourage you to also watch the talk tha
 
 ###Resources 
 - [Github Repo](https://github.com/connormckelvey/ujs-websockets)
-- [Slide Deck](slides.com/connorfinnmckelvey/ws/)
+- [Slide Deck](http://slides.com/connorfinnmckelvey/ws/)

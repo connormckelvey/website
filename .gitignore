@@ -2,3 +2,4 @@ _site
 .sass-cache
 .divshot-cache
 .bundle
+node_modules/

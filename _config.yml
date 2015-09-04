@@ -1,9 +1,9 @@
 # Site settings
 title: Connor McKelvey
 email: connormckelvey@gmail.com
-description: I am a front-end developer living in Orlando, FL. I have a thing for Javascript and I love accessibility. 
+description: I am a front-end developer living in Denver, CO. I have a thing for Javascript and I love accessibility. 
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://connormckelvey.com" # the base hostname & protocol for your site
+url: "http://www.connormckelvey.com" # the base hostname & protocol for your site
 twitter_username: cssddict
 github_username:  connormckelvey
 
@@ -14,4 +14,4 @@ exclude:
   - divshot-debug.log
 
 sass:
-  style: :compressed
+  style: compressed
