@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Overview of ES6 String Templates - Connor McKelvey</title>
+  <meta name="description" content="Javascript string templates are a new feature of ECMAScript 6. They bring new (and long sought after) features to string such as variable (and expression) in...">
+  
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic|Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+  <link rel="canonical" href="http://www.connormckelvey.com/es6/2015/04/16/overview-of-es6-string-templates.html">
+  <link rel="alternate" type="application/rss+xml" title="Connor McKelvey" href="http://www.connormckelvey.com/feed.xml" />
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png" />
+
+  <script src="/js/modernizr.js"></script>
+</head>
+
+
+  <body class="sub">
+
+    <header class="banner" role="banner">
+   <div class="banner__block">
+       <h2><a href="/">Connor McKelvey</a></h2>
+       <p>I am a front-end developer living in Denver, CO. I am obsessed with Javascript and I have a thing for accessibility. </p>
+       <nav role="navigation">
+          <ul class="inline-list">
+            
+              <li>
+                <a
+                  class="has-tooltip"
+                  title="Github"
+                  target="_blank"
+                  href="https://github.com/connormckelvey">
+                  <i class="fa fa-github"></i>
+                  <span class="tooltip">Github</span>
+                </a>
+              </li>
+            
+              <li>
+                <a
+                  class="has-tooltip"
+                  title="Twitter"
+                  target="_blank"
+                  href="https://twitter.com/cssaddict">
+                  <i class="fa fa-twitter"></i>
+                  <span class="tooltip">Twitter</span>
+                </a>
+              </li>
+            
+              <li>
+                <a
+                  class="has-tooltip"
+                  title="Stack Overflow"
+                  target="_blank"
+                  href="http://stackoverflow.com/users/413173/connor-finn-mckelvey">
+                  <i class="fa fa-stack-overflow"></i>
+                  <span class="tooltip">Stack Overflow</span>
+                </a>
+              </li>
+            
+              <li>
+                <a
+                  class="has-tooltip"
+                  title="Email Me"
+                  target="_blank"
+                  href="mailto:connormckelvey@gmail.com">
+                  <i class="fa fa-envelope"></i>
+                  <span class="tooltip">Email Me</span>
+                </a>
+              </li>
+            
+           </ul>
+       </nav>
+   </div>
+</header>
+
+
+      <main class="main" role="main">
+
+        <div class="back-link">
+	<div class="back-link__wrapper">
+		<a href="/"><i class="fa fa-arrow-left"></i> Go Home</a>
+	</div>
+</div>
+<article class="article hentry">
+    <header class="article__header entry-header">
+        <h1 class="article__title entry-title">
+            Overview of ES6 String Templates
+        </h1>
+        <div class="article__meta entry-meta">
+            <div class="article__date entry-date">
+                    <time class="entry-date" datetime="2015-04-16 13:02:24 -0600">
+                        Apr 16, 2015
+                    </time>
+            </div>
+            <div class="vcard">
+                <a class="url fn n" href="https://twitter.com/cssaddict" target="_blank" rel="author" title="Connor McKelvey's Twitter">Connor McKelvey</a>
+            </div>
+        </div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
+    <div class="article__content entry-content">
+        <p>Javascript string templates are a new feature of ECMAScript 6. They bring new (and long sought after) features to string such as variable (and expression) interpolation, white-space preservation and template tagging.</p>
+
+<p>There are some syntactical differences with string templates compared to POS (plain ol’ strings).</p>
+
+<h3 id="string-interpolation-with-variables">String Interpolation with Variables</h3>
+<p>This is perhaps the coolest feature of string templates. String interpolation has been available in languages such as Ruby and PHP for as long as I have been programming.</p>
+
+<p>Before ES6, constructing dynamic string for delivering messages to users or debugging, JS developers had to concatenate strings and variables like this:</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;Connor&quot;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="s2">&quot;Good Morning &quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;, would you like some coffee?&quot;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="c1">//Good Morning Connor, would you like some coffee?</span></code></pre></div>
+
+<p>Obviously the above example is a pain to write, but it is even more of a pain to read. We have the start of a string, that has to include a space before the closing quote, another space (for enhanced readability) the variable and so on.</p>
+
+<p>Let’s take a look at how we can achieve the same result using string templates.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;Connor&quot;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="err">`</span><span class="nx">Good</span> <span class="nx">Morning</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">},</span> <span class="nx">would</span> <span class="nx">you</span> <span class="nx">like</span> <span class="nx">some</span> <span class="nx">coffee</span><span class="o">?</span><span class="err">`</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="c1">//Good Morning Connor, would you like some coffee?</span></code></pre></div>
+
+<p>Compared to the ES5 way, the ES6 example saved us 5 keystrokes, but it also has the more important benefit of enhanced readability.</p>
+
+<p>It is important to notice how the <code>message</code> string is wrapped in backticks. Backticks are required when using string templates. Without them you do not get access to any of the great new features available.</p>
+
+<p>Also note how the <code>name</code> string is still wrapped in quotes. The above code would would perfectly fine if I had wrapped it in backticks, but using quotes for strings that do not include string interpolation is a nice way to let other developers know that they do not need to scan the string for expressions that will later be evaluated.</p>
+
+<h3 id="evaluating-expressions-in-strings">Evaluating Expressions in Strings</h3>
+<p>Not only can we pass a variable into the string template, but we can pass an expression. We can do something as simple as adding 2 number or get a little more fancy and include a date into our string.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;Connor&quot;</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="err">`</span><span class="nx">Good</span> <span class="nx">Morning</span> <span class="nx">$</span><span class="p">{</span><span class="nx">first</span><span class="p">},</span> <span class="nx">would</span> <span class="nx">you</span> <span class="nx">like</span> <span class="nx">$</span><span class="p">{</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">}</span> <span class="nx">cups</span> <span class="nx">of</span> <span class="nx">coffee</span><span class="o">?</span><span class="err">`</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">time</span> <span class="o">=</span> <span class="err">`</span><span class="nx">What</span> <span class="nx">time</span> <span class="nx">is</span> <span class="nx">it</span><span class="o">?</span> <span class="nx">It</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getHours</span><span class="p">()}</span><span class="o">:</span><span class="nx">$</span><span class="p">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getMinutes</span><span class="p">()}.</span><span class="err">`</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
+<span class="c1">//Good Morning Connor, would you 30 cups of coffee?</span>
+<span class="c1">//What time is it? It is 21:24.</span></code></pre></div>
+
+<h3 id="whitespace-preservation">Whitespace Preservation</h3>
+<p>ES6 templates preserve all whitespace. So it is important to remember this when trying to break up a string onto multiple lines. If you are trying to keep your lines of code within the 80 character guide, you still need to escape the new line character or concatenate multiple other strings over multiple lines like you would with a normal string.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="err">`</span><span class="nx">It</span> <span class="nx">is</span>
+    <span class="nx">A</span>
+<span class="nx">New</span> <span class="nx">Line</span>
+            <span class="nx">It</span> <span class="nx">is</span>
+    <span class="nx">A</span> 
+  <span class="nx">New</span> <span class="nx">Day</span>
+<span class="err">`</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="c1">//It is</span>
+<span class="c1">//    A</span>
+<span class="c1">//New Line</span>
+<span class="c1">//            It is</span>
+<span class="c1">//    A </span>
+<span class="c1">//  New Day</span></code></pre></div>
+
+<h3 id="tagged-template-strings">Tagged Template Strings</h3>
+<p>With tagged templates you can use a function to modify the output of a string. This could be useful when you need to modify part of the message being displayed to the user based on some condition, such as a time of day. We do this by creating a function with two arguments, the strings and the values to be evaluated or manipulated. We then alter the first item of the values array based on where or not it is before or after 12. Finally we return a reconstructed string template.</p>
+
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">tag</span><span class="p">(</span><span class="nx">strings</span><span class="p">,</span> <span class="p">...</span><span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Afternoon&quot;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Morning&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+  
+  <span class="k">return</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">strings</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">strings</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">strings</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">values</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span><span class="err">`</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">tag</span><span class="err">`</span><span class="nx">Good</span> <span class="nx">$</span><span class="p">{</span><span class="s2">&quot;&quot;</span><span class="p">}</span> <span class="nx">Connor</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">time</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getHours</span><span class="p">()}</span><span class="o">:</span><span class="nx">$</span><span class="p">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getMinutes</span><span class="p">()}.</span><span class="err">`</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="c1">//Good Afternoon Connor, the current time is 21:40</span></code></pre></div>
+
+<p>Notice how when passing the string template into the tag function we are not using parentheses. Attempting to pass the template into a function with parentheses will not through an error, but it will produce undesired results.</p>
+
+<p>Obviously there is probably a more efficient way of reconstructing the string template that is to be evaluated, but that probably deserves its own blog post.</p>
+
+
+    </div><!-- .entry-content -->
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'connormckelvey';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <footer class="article__footer entry-meta">
+
+    </footer>
+</article>
+
+        
+      </main>
+
+    <footer class="footer">
+	Copyright &copy; <script>document.write(new Date().getFullYear())</script> Connor McKelvey
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-31478269-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </body>
+
+</html>
