@@ -5,8 +5,8 @@
     <description>I am a front-end developer living in Denver, CO. I have a thing for Javascript and I love accessibility.</description>
     <link>http://www.connormckelvey.com/</link>
     <atom:link href="http://www.connormckelvey.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 04 Sep 2015 16:23:28 -0600</pubDate>
-    <lastBuildDate>Fri, 04 Sep 2015 16:23:28 -0600</lastBuildDate>
+    <pubDate>Mon, 07 Sep 2015 22:31:55 -0600</pubDate>
+    <lastBuildDate>Mon, 07 Sep 2015 22:31:55 -0600</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -17,7 +17,7 @@
 
 &lt;p&gt;I decided that I was going to attempt to copy all of the Array methods from &lt;a href=&quot;http://underscorejs.org&quot;&gt;Underscore.js&lt;/a&gt; and create a Elixir module to be used with Lists. I am fully aware of the &lt;strong&gt;List&lt;/strong&gt; module, but that’s not the point. I wanted to try to recreate the functionality in these methods using only basic Elixir code, pattern matching and a whole lot of recursion. Even though Elixir has &lt;code&gt;case&lt;/code&gt;, &lt;code&gt;cond&lt;/code&gt; and &lt;code&gt;if&lt;/code&gt; I wanted to focus on pattern matching (the concept that pulled me into Elixir).&lt;/p&gt;
 
-&lt;p&gt;So far I have the first 4 Array methods from Underscore.js &lt;code&gt;first&lt;/code&gt;, &lt;code&gt;initial&lt;/code&gt;, &lt;code&gt;rest&lt;/code&gt;, &lt;code&gt;compact&lt;/code&gt; as well as two helper functions &lt;code&gt;reverse&lt;/code&gt; and &lt;code&gt;length&lt;/code&gt;. You can see my progress &lt;a href=&quot;https://github.com/connormckelvey/learning-elixir&quot;&gt;here&lt;/a&gt; as I continue to add functions, a readme and some tests. I won’t go into all of these but I do want to go into the one I had the most difficulty with: &lt;code&gt;initial&lt;/code&gt;. And Hey! I’ve only been messing with Elixir (and FP) for 3 days, so thats allowed. Feel free to stop reading this post now.&lt;/p&gt;
+&lt;p&gt;So far I have the first 4 Array methods from Underscore.js &lt;code&gt;first&lt;/code&gt;, &lt;code&gt;initial&lt;/code&gt;, &lt;code&gt;rest&lt;/code&gt;, &lt;code&gt;compact&lt;/code&gt; as well as two helper functions &lt;code&gt;reverse&lt;/code&gt; and &lt;code&gt;length&lt;/code&gt;. You can see my progress &lt;a href=&quot;https://github.com/connormckelvey/elixir-underscore&quot;&gt;here&lt;/a&gt; as I continue to add functions, a readme and some tests. I won’t go into all of these but I do want to go into the one I had the most difficulty with: &lt;code&gt;initial&lt;/code&gt;. And Hey! I’ve only been messing with Elixir (and FP) for 3 days, so thats allowed. Feel free to stop reading this post now.&lt;/p&gt;
 
 &lt;h3 id=&quot;linked-lists&quot;&gt;Linked Lists&lt;/h3&gt;
 &lt;p&gt;Coming from a Javascript background I think of Arrays when I think of linked lists (even though I should think of tuples ). Lists in FP are similar to Arrays in Object Oriented languages, in that they are well… lists with multiple values. However Arrays in Javascript, for example, are still Objects, and they inherit the Array prototype, so you get all sorts of helpful properties and methods that make manipulating the array and retrieving information about the array much easier.&lt;/p&gt;
