@@ -118,20 +118,20 @@
 
 <p>Im a complete n00b with functional programming so it has really been a major shift. But after a couple hours of messing around in <strong>iex</strong> and reading the docs I decided to dive right in.</p>
 
-<p>I decided that I was going to attempt to copy all of the Array methods from <a href="http://underscorejs.org">Underscore.js</a> and create a Elixir module to be used with Lists. I am fully aware of the <strong>List</strong> module, but that’s not the point. I wanted to try to recreate the functionality in these methods using only basic Elixir code, pattern matching and a whole lot of recursion. Even though Elixir has <code>case</code>, <code>cond</code> and <code>if</code> I wanted to focus on pattern matching (the concept that pulled me into Elixir).</p>
+<p>I decided that I was going to attempt to copy all of the Array methods from <a href="http://underscorejs.org">Underscore.js</a> and create a Elixir module to be used with Lists. I am fully aware of the <strong>List</strong> module, but that’s not the point. I wanted to try to recreate the functionality in these methods using only basic Elixir code, pattern matching and a whole lot of recursion. Even though Elixir has <code class="highlighter-rouge">case</code>, <code class="highlighter-rouge">cond</code> and <code class="highlighter-rouge">if</code> I wanted to focus on pattern matching (the concept that pulled me into Elixir).</p>
 
-<p>So far I have the first 4 Array methods from Underscore.js <code>first</code>, <code>initial</code>, <code>rest</code>, <code>compact</code> as well as two helper functions <code>reverse</code> and <code>length</code>. You can see my progress <a href="https://github.com/connormckelvey/elixir-underscore">here</a> as I continue to add functions, a readme and some tests. I won’t go into all of these but I do want to go into the one I had the most difficulty with: <code>initial</code>. And Hey! I’ve only been messing with Elixir (and FP) for 3 days, so thats allowed. Feel free to stop reading this post now.</p>
+<p>So far I have the first 4 Array methods from Underscore.js <code class="highlighter-rouge">first</code>, <code class="highlighter-rouge">initial</code>, <code class="highlighter-rouge">rest</code>, <code class="highlighter-rouge">compact</code> as well as two helper functions <code class="highlighter-rouge">reverse</code> and <code class="highlighter-rouge">length</code>. You can see my progress <a href="https://github.com/connormckelvey/elixir-underscore">here</a> as I continue to add functions, a readme and some tests. I won’t go into all of these but I do want to go into the one I had the most difficulty with: <code class="highlighter-rouge">initial</code>. And Hey! I’ve only been messing with Elixir (and FP) for 3 days, so thats allowed. Feel free to stop reading this post now.</p>
 
-<h3 id="linked-lists">Linked Lists</h3>
-<p>Coming from a Javascript background I think of Arrays when I think of linked lists (even though I should think of tuples ). Lists in FP are similar to Arrays in Object Oriented languages, in that they are well… lists with multiple values. However Arrays in Javascript, for example, are still Objects, and they inherit the Array prototype, so you get all sorts of helpful properties and methods that make manipulating the array and retrieving information about the array much easier.</p>
+<p>###Linked Lists
+Coming from a Javascript background I think of Arrays when I think of linked lists (even though I should think of tuples ). Lists in FP are similar to Arrays in Object Oriented languages, in that they are well… lists with multiple values. However Arrays in Javascript, for example, are still Objects, and they inherit the Array prototype, so you get all sorts of helpful properties and methods that make manipulating the array and retrieving information about the array much easier.</p>
 
 <p>You don’t get that in Elixir or really any other functional programming language. You can use the List module that comes with Elixir, but that’s no good for learning functional programming.</p>
 
-<p>A linked list is basically a value taking up a chunk of memory, pointing to the next value taking up a chunk of memory, pointing to the next chunk of memory, until the last value does’t point anywhere else. So when you have a list, you really only know what the first element (also known as head) of the list is. Keep that in mind as I review the <code>initial</code> function.</p>
+<p>A linked list is basically a value taking up a chunk of memory, pointing to the next value taking up a chunk of memory, pointing to the next chunk of memory, until the last value does’t point anywhere else. So when you have a list, you really only know what the first element (also known as head) of the list is. Keep that in mind as I review the <code class="highlighter-rouge">initial</code> function.</p>
 
-<h3 id="intial">Intial</h3>
+<p>###Intial</p>
 
-<p>If you are not familiar with the <code>initial</code> method in Underscores, here is the definition:</p>
+<p>If you are not familiar with the <code class="highlighter-rouge">initial</code> method in Underscores, here is the definition:</p>
 
 <p><em>Returns everything but the last entry of the list. Passing <strong>n</strong> will
   return all the values in the list, excluding the last N.</em></p>
@@ -140,62 +140,62 @@
 
 <p>The first two functions are the public functions of my Underscore module</p>
 
-<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="kd">def</span> <span class="n">initial</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">do</span>
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">def</span> <span class="n">initial</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">do</span>
   <span class="n">do_initial</span> <span class="n">list</span><span class="p">,</span> <span class="n">n</span>
 <span class="k">end</span>
 
-<span class="kd">def</span> <span class="n">initial</span><span class="p">(</span><span class="n">list</span><span class="p">)</span> <span class="k">do</span>
+<span class="k">def</span> <span class="n">initial</span><span class="p">(</span><span class="n">list</span><span class="p">)</span> <span class="k">do</span>
   <span class="n">do_initial</span> <span class="n">list</span>
-<span class="k">end</span></code></pre></div>
+<span class="k">end</span></code></pre></figure>
 
-<p>Notice how they bot have the same name. In Elixir the first function is actually called <code>initial/2</code> and the second is called <code>initial/1</code>, where the appropriate function is called depending on the number of arguments being passed in. I’ll take this simplicity over an <code>if/else</code> block any day.</p>
+<p>Notice how they bot have the same name. In Elixir the first function is actually called <code class="highlighter-rouge">initial/2</code> and the second is called <code class="highlighter-rouge">initial/1</code>, where the appropriate function is called depending on the number of arguments being passed in. I’ll take this simplicity over an <code class="highlighter-rouge">if/else</code> block any day.</p>
 
-<p>To test my function I open <strong>iex</strong> and run <code>iex&gt; Underscore.initial([1,2,3,4,5])</code>. (And because I am an amazing developer, it returns <em>1</em>.)  Before <em>1</em> is returned, <code>initial</code> takes the input and passes it on to the <code>do_initial</code> private functions (notice <code>defp</code>).</p>
+<p>To test my function I open <strong>iex</strong> and run <code class="highlighter-rouge">iex&gt; Underscore.initial([1,2,3,4,5])</code>. (And because I am an amazing developer, it returns <em>1</em>.)  Before <em>1</em> is returned, <code class="highlighter-rouge">initial</code> takes the input and passes it on to the <code class="highlighter-rouge">do_initial</code> private functions (notice <code class="highlighter-rouge">defp</code>).</p>
 
-<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="kd">defp</span> <span class="n">do_initial</span><span class="p">([])</span> <span class="k">do</span>
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defp</span> <span class="n">do_initial</span><span class="p">([])</span> <span class="k">do</span>
   <span class="no">nil</span>
 <span class="k">end</span>
 
-<span class="kd">defp</span> <span class="n">do_initial</span><span class="p">(</span><span class="n">list</span><span class="p">)</span> <span class="k">do</span>
-  <span class="p">[</span><span class="n">head</span> <span class="p">|</span> <span class="n">tail</span><span class="p">]</span> <span class="p">=</span> <span class="n">reverse</span> <span class="n">list</span>
+<span class="k">defp</span> <span class="n">do_initial</span><span class="p">(</span><span class="n">list</span><span class="p">)</span> <span class="k">do</span>
+  <span class="p">[</span><span class="n">head</span> <span class="o">|</span> <span class="n">tail</span><span class="p">]</span> <span class="o">=</span> <span class="n">reverse</span> <span class="n">list</span>
   <span class="n">reverse</span><span class="p">(</span><span class="n">tail</span><span class="p">)</span>
-<span class="k">end</span></code></pre></div>
+<span class="k">end</span></code></pre></figure>
 
 <p>But wait, there are two functions now with the same name, and same arity. This is where pattern matching really comes into play. All Elixir wants is peace and balance, so from many aspects of that language it is just try to match patterns to attain that balance. The first function listed does only take one argument but pattern matching allows us to check for an empty list. So the list will only be passed in if its empty.</p>
 
-<p>So upon calling <code>Underscore.initial([1,2,3,4,5])</code> the list gets passed to:</p>
+<p>So upon calling <code class="highlighter-rouge">Underscore.initial([1,2,3,4,5])</code> the list gets passed to:</p>
 
-<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="kd">defp</span> <span class="n">do_initial</span><span class="p">(</span><span class="n">list</span><span class="p">)</span> <span class="k">do</span>
-  <span class="p">[</span><span class="n">head</span> <span class="p">|</span> <span class="n">tail</span><span class="p">]</span> <span class="p">=</span> <span class="n">reverse</span> <span class="n">list</span>
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defp</span> <span class="n">do_initial</span><span class="p">(</span><span class="n">list</span><span class="p">)</span> <span class="k">do</span>
+  <span class="p">[</span><span class="n">head</span> <span class="o">|</span> <span class="n">tail</span><span class="p">]</span> <span class="o">=</span> <span class="n">reverse</span> <span class="n">list</span>
   <span class="n">reverse</span><span class="p">(</span><span class="n">tail</span><span class="p">)</span>
-<span class="k">end</span></code></pre></div>
+<span class="k">end</span></code></pre></figure>
 
-<p>Two new variables are created inside the function, <code>head</code> and <code>tail</code> which are then equated to the list after it has been passed through the <code>reverse</code> function. As I said earlier, Elixir only knows the first element of a List, and in <code>initial</code> we want a new list with some stuff knocked off the end. That in addition to the fact that Elixir wants to balance the equation <code>[head|tail] = [5,4,3,2,1]</code>, the only outcome could be <code>head</code> which would be return to <code>5</code> and <code>tail</code> which would return <code>[4,3,2,1]</code>, the remainder of the list. I then reverse <code>tail</code> in order to return a new list where the last element has been removed: <code>[1,2,3,4]</code>.</p>
+<p>Two new variables are created inside the function, <code class="highlighter-rouge">head</code> and <code class="highlighter-rouge">tail</code> which are then equated to the list after it has been passed through the <code class="highlighter-rouge">reverse</code> function. As I said earlier, Elixir only knows the first element of a List, and in <code class="highlighter-rouge">initial</code> we want a new list with some stuff knocked off the end. That in addition to the fact that Elixir wants to balance the equation <code class="highlighter-rouge">[head|tail] = [5,4,3,2,1]</code>, the only outcome could be <code class="highlighter-rouge">head</code> which would be return to <code class="highlighter-rouge">5</code> and <code class="highlighter-rouge">tail</code> which would return <code class="highlighter-rouge">[4,3,2,1]</code>, the remainder of the list. I then reverse <code class="highlighter-rouge">tail</code> in order to return a new list where the last element has been removed: <code class="highlighter-rouge">[1,2,3,4]</code>.</p>
 
-<p>I also added the <code>initial/1</code> function with a condition to catch empty lists. Elixir throws and error when you try to get the head or tail of an empty list so I decided to return a falsey value, in this case <code>nil</code>.</p>
+<p>I also added the <code class="highlighter-rouge">initial/1</code> function with a condition to catch empty lists. Elixir throws and error when you try to get the head or tail of an empty list so I decided to return a falsey value, in this case <code class="highlighter-rouge">nil</code>.</p>
 
-<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="kd">defp</span> <span class="n">do_initial</span><span class="p">([])</span> <span class="k">do</span>
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defp</span> <span class="n">do_initial</span><span class="p">([])</span> <span class="k">do</span>
   <span class="no">nil</span>
-<span class="k">end</span></code></pre></div>
+<span class="k">end</span></code></pre></figure>
 
-<p>In the case that we wanted to get a new copy of the list without the last <strong>n</strong> elements we would call: <code>Underscore.initial([1,2,3,4,5], 2)</code>. And yet again do to my special set of skills, we get <code>[1,2,3]</code>.</p>
+<p>In the case that we wanted to get a new copy of the list without the last <strong>n</strong> elements we would call: <code class="highlighter-rouge">Underscore.initial([1,2,3,4,5], 2)</code>. And yet again do to my special set of skills, we get <code class="highlighter-rouge">[1,2,3]</code>.</p>
 
-<p>The <code>initial/2</code> function passes on <code>list</code> and <code>n</code> to:</p>
+<p>The <code class="highlighter-rouge">initial/2</code> function passes on <code class="highlighter-rouge">list</code> and <code class="highlighter-rouge">n</code> to:</p>
 
-<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="kd">defp</span> <span class="n">do_initial</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">do</span>
-  <span class="p">[</span><span class="n">head</span> <span class="p">|</span> <span class="n">tail</span><span class="p">]</span> <span class="p">=</span> <span class="n">reverse</span> <span class="n">list</span>
-  <span class="n">do_initial</span> <span class="n">reverse</span><span class="p">(</span><span class="n">tail</span><span class="p">),</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
-<span class="k">end</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defp</span> <span class="n">do_initial</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">do</span>
+  <span class="p">[</span><span class="n">head</span> <span class="o">|</span> <span class="n">tail</span><span class="p">]</span> <span class="o">=</span> <span class="n">reverse</span> <span class="n">list</span>
+  <span class="n">do_initial</span> <span class="n">reverse</span><span class="p">(</span><span class="n">tail</span><span class="p">),</span> <span class="n">n</span> <span class="o">-</span> <span class="m">1</span>
+<span class="k">end</span></code></pre></figure>
 
-<p>Hear, <code>head</code> and <code>tail</code> are created from the reversed list and then <code>do_initial</code> calls itself passing in reversed tail and a number 1 less than <code>n</code>. This will continue until some other pattern is matched. <code>head</code> and <code>tail</code> are created from the new, shorter, reversed list and then <code>do_initial</code> calls itself again.</p>
+<p>Hear, <code class="highlighter-rouge">head</code> and <code class="highlighter-rouge">tail</code> are created from the reversed list and then <code class="highlighter-rouge">do_initial</code> calls itself passing in reversed tail and a number 1 less than <code class="highlighter-rouge">n</code>. This will continue until some other pattern is matched. <code class="highlighter-rouge">head</code> and <code class="highlighter-rouge">tail</code> are created from the new, shorter, reversed list and then <code class="highlighter-rouge">do_initial</code> calls itself again.</p>
 
 <p>Because this function is recursive we need function that will stop the recursion and return the value we actually want.</p>
 
-<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="kd">defp</span> <span class="n">do_initial</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">do</span>
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defp</span> <span class="n">do_initial</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span> <span class="k">do</span>
   <span class="n">list</span>
-<span class="k">end</span></code></pre></div>
+<span class="k">end</span></code></pre></figure>
 
-<p>When the second parameter is equal to zero, <code>do_inital/2</code> returns our new list that is missing the last <strong>n</strong> elements.</p>
+<p>When the second parameter is equal to zero, <code class="highlighter-rouge">do_inital/2</code> returns our new list that is missing the last <strong>n</strong> elements.</p>
 
 <p>Success!</p>
 
