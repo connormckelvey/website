@@ -118,8 +118,8 @@
 
 <p>There are some syntactical differences with string templates compared to POS (plain ol’ strings).</p>
 
-<p>###String Interpolation with Variables
-This is perhaps the coolest feature of string templates. String interpolation has been available in languages such as Ruby and PHP for as long as I have been programming.</p>
+<h3 id="string-interpolation-with-variables">String Interpolation with Variables</h3>
+<p>This is perhaps the coolest feature of string templates. String interpolation has been available in languages such as Ruby and PHP for as long as I have been programming.</p>
 
 <p>Before ES6, constructing dynamic string for delivering messages to users or debugging, JS developers had to concatenate strings and variables like this:</p>
 
@@ -143,8 +143,8 @@ This is perhaps the coolest feature of string templates. String interpolation ha
 
 <p>Also note how the <code class="highlighter-rouge">name</code> string is still wrapped in quotes. The above code would would perfectly fine if I had wrapped it in backticks, but using quotes for strings that do not include string interpolation is a nice way to let other developers know that they do not need to scan the string for expressions that will later be evaluated.</p>
 
-<p>###Evaluating Expressions in Strings
-Not only can we pass a variable into the string template, but we can pass an expression. We can do something as simple as adding 2 number or get a little more fancy and include a date into our string.</p>
+<h3 id="evaluating-expressions-in-strings">Evaluating Expressions in Strings</h3>
+<p>Not only can we pass a variable into the string template, but we can pass an expression. We can do something as simple as adding 2 number or get a little more fancy and include a date into our string.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"Connor"</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
@@ -156,14 +156,14 @@ Not only can we pass a variable into the string template, but we can pass an exp
 <span class="c1">//Good Morning Connor, would you 30 cups of coffee?</span>
 <span class="c1">//What time is it? It is 21:24.</span></code></pre></figure>
 
-<p>###Whitespace Preservation
-ES6 templates preserve all whitespace. So it is important to remember this when trying to break up a string onto multiple lines. If you are trying to keep your lines of code within the 80 character guide, you still need to escape the new line character or concatenate multiple other strings over multiple lines like you would with a normal string.</p>
+<h3 id="whitespace-preservation">Whitespace Preservation</h3>
+<p>ES6 templates preserve all whitespace. So it is important to remember this when trying to break up a string onto multiple lines. If you are trying to keep your lines of code within the 80 character guide, you still need to escape the new line character or concatenate multiple other strings over multiple lines like you would with a normal string.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="err">`</span><span class="nx">It</span> <span class="nx">is</span>
     <span class="nx">A</span>
 <span class="nx">New</span> <span class="nx">Line</span>
             <span class="nx">It</span> <span class="nx">is</span>
-    <span class="nx">A</span> 
+    <span class="nx">A</span>
   <span class="nx">New</span> <span class="nx">Day</span>
 <span class="err">`</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
@@ -171,11 +171,11 @@ ES6 templates preserve all whitespace. So it is important to remember this when 
 <span class="c1">//    A</span>
 <span class="c1">//New Line</span>
 <span class="c1">//            It is</span>
-<span class="c1">//    A </span>
+<span class="c1">//    A</span>
 <span class="c1">//  New Day</span></code></pre></figure>
 
-<p>###Tagged Template Strings
-With tagged templates you can use a function to modify the output of a string. This could be useful when you need to modify part of the message being displayed to the user based on some condition, such as a time of day. We do this by creating a function with two arguments, the strings and the values to be evaluated or manipulated. We then alter the first item of the values array based on where or not it is before or after 12. Finally we return a reconstructed string template.</p>
+<h3 id="tagged-template-strings">Tagged Template Strings</h3>
+<p>With tagged templates you can use a function to modify the output of a string. This could be useful when you need to modify part of the message being displayed to the user based on some condition, such as a time of day. We do this by creating a function with two arguments, the strings and the values to be evaluated or manipulated. We then alter the first item of the values array based on where or not it is before or after 12. Finally we return a reconstructed string template.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">tag</span><span class="p">(</span><span class="nx">strings</span><span class="p">,</span> <span class="p">...</span><span class="nx">values</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="nx">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
@@ -183,7 +183,7 @@ With tagged templates you can use a function to modify the output of a string. T
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Morning"</span><span class="p">;</span>
     <span class="p">}</span>
-  
+
   <span class="k">return</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">strings</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">strings</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">strings</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">values</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span><span class="err">`</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -194,7 +194,6 @@ With tagged templates you can use a function to modify the output of a string. T
 <p>Notice how when passing the string template into the tag function we are not using parentheses. Attempting to pass the template into a function with parentheses will not through an error, but it will produce undesired results.</p>
 
 <p>Obviously there is probably a more efficient way of reconstructing the string template that is to be evaluated, but that probably deserves its own blog post.</p>
-
 
     </div><!-- .entry-content -->
     <div id="disqus_thread"></div>

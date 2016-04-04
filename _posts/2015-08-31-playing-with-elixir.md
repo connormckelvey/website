@@ -13,16 +13,16 @@ I decided that I was going to attempt to copy all of the Array methods from [Und
 
 So far I have the first 4 Array methods from Underscore.js `first`, `initial`, `rest`, `compact` as well as two helper functions `reverse` and `length`. You can see my progress [here](https://github.com/connormckelvey/elixir-underscore) as I continue to add functions, a readme and some tests. I won't go into all of these but I do want to go into the one I had the most difficulty with: `initial`. And Hey! I've only been messing with Elixir (and FP) for 3 days, so thats allowed. Feel free to stop reading this post now.
 
-###Linked Lists
+### Linked Lists
 Coming from a Javascript background I think of Arrays when I think of linked lists (even though I should think of tuples ). Lists in FP are similar to Arrays in Object Oriented languages, in that they are well... lists with multiple values. However Arrays in Javascript, for example, are still Objects, and they inherit the Array prototype, so you get all sorts of helpful properties and methods that make manipulating the array and retrieving information about the array much easier.
 
 You don't get that in Elixir or really any other functional programming language. You can use the List module that comes with Elixir, but that's no good for learning functional programming.
 
 A linked list is basically a value taking up a chunk of memory, pointing to the next value taking up a chunk of memory, pointing to the next chunk of memory, until the last value does't point anywhere else. So when you have a list, you really only know what the first element (also known as head) of the list is. Keep that in mind as I review the `initial` function.
 
-###Intial
+### Initial
 
-If you are not familiar with the `initial` method in Underscores, here is the definition:
+If you are not familiar with the `initial` method in Underscore, here is the definition:
 
 _Returns everything but the last entry of the list. Passing **n** will
   return all the values in the list, excluding the last N._
