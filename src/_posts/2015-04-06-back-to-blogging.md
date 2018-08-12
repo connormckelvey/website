@@ -9,6 +9,6 @@ I am a terrible blogger. I will get that right out of the way and say it. I have
 
 _But this is where it ends._
 
-I have never had a blog on my [connormckelvey.com](http://www.connormckelvey.com) for fear that I wouldn't maintain it. So I am doing away with my portfolio site and completely replacing it with a blog. What better way to solve the commitment problem than to walk right up and punching it right in the pixels.
+I have never had a blog on [connormckelvey.com](https://www.connormckelvey.com) for fear that I wouldn't maintain it. So I am doing away with my portfolio site and completely replacing it with a blog. What better way to solve the commitment problem than to walk right up and punching it right in the pixels.
 
 So stay tuned as I use my words instead of screenshots of shitty websites to try to show you that I know what I am talking about. 
