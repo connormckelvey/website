@@ -25,7 +25,7 @@ jobs:
           name: Release Website
           command: |
             sudo apt-get update && sudo apt-get install -y awscli
-            aws s3 sync ./build/ s3://www.connormckelvey.com/
+            aws s3 sync ./build/ s3://www.connormckelvey.com/ --acl public-read
 
 workflows:
   version: 2
