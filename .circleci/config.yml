@@ -10,36 +10,31 @@ jobs:
           name: Build Website
           command: make            
       - persist_to_workspace:
-          root: ~/resume
+          root: ~/website
           paths:
             - build/*
 
-  # deploy_website:
-  #   docker:
-  #     - image: circleci/golang:1.10
-  #   working_directory: ~/resume
-  #   steps: 
-  #     - attach_workspace:
-  #         at: ~/resume
-  #     - run: 
-  #         name: Release Resume
-  #         command: | 
-  #           rm dist/main.css
-  #           go get -u github.com/tcnksm/ghr
-  #           ghr -t ${GITHUB_TOKEN} \
-  #             -u ${CIRCLE_PROJECT_USERNAME} \
-  #             -r ${CIRCLE_PROJECT_REPONAME} \
-  #             -c ${CIRCLE_SHA1} \
-  #             -delete ${CIRCLE_TAG} \
-  #             ./dist
+  deploy_website:
+    docker:
+      - image: circleci/python:2.7.15-jessie-browsers
+    working_directory: ~/website
+    steps:
+      - attach_workspace:
+          at: ~/website
+      - run:
+          name: Release Website
+          command: |
+            sudo apt-get update && sudo apt-get install -y awscli
+            aws s3 ls
 
 workflows:
   version: 2
   build_and_release:
     jobs:
-      - build_resume:
-      - release_resume:
+      - build_website
+      - deploy_website:
           requires:
-            - build_resume
+            - build_website
+          filters:
             branches:
               only: master
