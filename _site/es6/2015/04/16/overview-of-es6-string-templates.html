@@ -14,7 +14,7 @@
 
   <link rel="stylesheet" href="/css/main.css">
   <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic|Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <link rel="canonical" href="http://www.connormckelvey.com/es6/2015/04/16/overview-of-es6-string-templates.html">
   <link rel="alternate" type="application/rss+xml" title="Connor McKelvey" href="http://www.connormckelvey.com/feed.xml" />
@@ -35,9 +35,9 @@
 
     <header class="banner" role="banner">
    <div class="banner__block">
-       <h2><a href="/">Connor McKelvey</a></h2>
-       <p>I am a front-end developer living in Denver, CO. I am obsessed with Javascript and I have a thing for accessibility. </p>
-       <nav role="navigation">
+      <h2><a href="/">Connor McKelvey</a></h2>
+      <p>Software Engineer living in Boulder, CO. <br> Check out my <a target="_blank" class="underline" href="https://github.com/connormckelvey/resume">most recent project!</a></p>
+      <nav role="navigation">
           <ul class="inline-list">
             
               <li>
@@ -46,7 +46,7 @@
                   title="Github"
                   target="_blank"
                   href="https://github.com/connormckelvey">
-                  <i class="fa fa-github"></i>
+                  <i class="fa fa-github" aria-hidden="true"></i>
                   <span class="tooltip">Github</span>
                 </a>
               </li>
@@ -57,7 +57,7 @@
                   title="Twitter"
                   target="_blank"
                   href="https://twitter.com/cssaddict">
-                  <i class="fa fa-twitter"></i>
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
                   <span class="tooltip">Twitter</span>
                 </a>
               </li>
@@ -68,7 +68,7 @@
                   title="Stack Overflow"
                   target="_blank"
                   href="http://stackoverflow.com/users/413173/connor-finn-mckelvey">
-                  <i class="fa fa-stack-overflow"></i>
+                  <i class="fa fa-stack-overflow" aria-hidden="true"></i>
                   <span class="tooltip">Stack Overflow</span>
                 </a>
               </li>
@@ -79,13 +79,19 @@
                   title="Email Me"
                   target="_blank"
                   href="mailto:connormckelvey@gmail.com">
-                  <i class="fa fa-envelope"></i>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
                   <span class="tooltip">Email Me</span>
                 </a>
               </li>
             
            </ul>
-       </nav>
+      </nav>
+      <p>
+          <a title="Download My Resume" class="button" href="https://github.com/connormckelvey/resume/releases/latest">
+            <i class="fa fa-download" aria-hidden="true"></i>
+            Resume
+          </a>
+      </p>
    </div>
 </header>
 
@@ -133,7 +139,7 @@
 <p>Let’s take a look at how we can achieve the same result using string templates.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"Connor"</span><span class="p">;</span>
-<span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="err">`</span><span class="nx">Good</span> <span class="nx">Morning</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">},</span> <span class="nx">would</span> <span class="nx">you</span> <span class="nx">like</span> <span class="nx">some</span> <span class="nx">coffee</span><span class="p">?</span><span class="err">`</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="s2">`Good Morning </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">, would you like some coffee?`</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
 <span class="c1">//Good Morning Connor, would you like some coffee?</span></code></pre></figure>
 
@@ -149,8 +155,8 @@
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"Connor"</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-<span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="err">`</span><span class="nx">Good</span> <span class="nx">Morning</span> <span class="nx">$</span><span class="p">{</span><span class="nx">first</span><span class="p">},</span> <span class="nx">would</span> <span class="nx">you</span> <span class="nx">like</span> <span class="nx">$</span><span class="p">{</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">}</span> <span class="nx">cups</span> <span class="nx">of</span> <span class="nx">coffee</span><span class="p">?</span><span class="err">`</span><span class="p">;</span>
-<span class="kd">let</span> <span class="nx">time</span> <span class="o">=</span> <span class="err">`</span><span class="nx">What</span> <span class="nx">time</span> <span class="nx">is</span> <span class="nx">it</span><span class="p">?</span> <span class="nx">It</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getHours</span><span class="p">()}:</span><span class="nx">$</span><span class="p">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getMinutes</span><span class="p">()}.</span><span class="err">`</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="s2">`Good Morning </span><span class="p">${</span><span class="nx">first</span><span class="p">}</span><span class="s2">, would you like </span><span class="p">${</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">}</span><span class="s2"> cups of coffee?`</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">time</span> <span class="o">=</span> <span class="s2">`What time is it? It is </span><span class="p">${</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getHours</span><span class="p">()}</span><span class="s2">:</span><span class="p">${</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getMinutes</span><span class="p">()}</span><span class="s2">.`</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
 <span class="c1">//Good Morning Connor, would you 30 cups of coffee?</span>
@@ -159,13 +165,13 @@
 <h3 id="whitespace-preservation">Whitespace Preservation</h3>
 <p>ES6 templates preserve all whitespace. So it is important to remember this when trying to break up a string onto multiple lines. If you are trying to keep your lines of code within the 80 character guide, you still need to escape the new line character or concatenate multiple other strings over multiple lines like you would with a normal string.</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="err">`</span><span class="nx">It</span> <span class="nx">is</span>
-    <span class="nx">A</span>
-<span class="nx">New</span> <span class="nx">Line</span>
-            <span class="nx">It</span> <span class="nx">is</span>
-    <span class="nx">A</span>
-  <span class="nx">New</span> <span class="nx">Day</span>
-<span class="err">`</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="s2">`It is
+    A
+New Line
+            It is
+    A
+  New Day
+`</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
 <span class="c1">//It is</span>
 <span class="c1">//    A</span>
@@ -184,10 +190,10 @@
         <span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Morning"</span><span class="p">;</span>
     <span class="p">}</span>
 
-  <span class="k">return</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">strings</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">strings</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">strings</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span><span class="nx">$</span><span class="p">{</span><span class="nx">values</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span><span class="err">`</span><span class="p">;</span>
+  <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="nx">strings</span><span class="p">[</span><span class="mi">0</span><span class="p">]}${</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]}${</span><span class="nx">strings</span><span class="p">[</span><span class="mi">1</span><span class="p">]}${</span><span class="nx">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]}${</span><span class="nx">strings</span><span class="p">[</span><span class="mi">2</span><span class="p">]}${</span><span class="nx">values</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span><span class="s2">`</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">tag</span><span class="err">`</span><span class="nx">Good</span> <span class="nx">$</span><span class="p">{</span><span class="s2">""</span><span class="p">}</span> <span class="nx">Connor</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">current</span> <span class="nx">time</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getHours</span><span class="p">()}</span><span class="err">:</span><span class="nx">$</span><span class="p">{</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getMinutes</span><span class="p">()}.</span><span class="err">`</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">tag</span><span class="s2">`Good </span><span class="p">${</span><span class="s2">""</span><span class="p">}</span><span class="s2"> Connor, the current time is </span><span class="p">${</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getHours</span><span class="p">()}</span><span class="s2">:</span><span class="p">${</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getMinutes</span><span class="p">()}</span><span class="s2">.`</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
 <span class="c1">//Good Afternoon Connor, the current time is 21:40</span></code></pre></figure>
 

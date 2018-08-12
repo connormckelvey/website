@@ -30,6 +30,20 @@
     a {
         color: #FFF;
         text-decoration: none;
+
+        &.underline {
+            text-decoration: underline;
+        }
+
+        &.button {
+            i {
+                transition-duration: 0ms;
+            }
+        }
+        &.button:hover {
+            background: #FFF;
+            color: #49a09d;
+        }
     }
 }
 
