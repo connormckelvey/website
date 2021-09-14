@@ -16,7 +16,7 @@ jobs:
 
   deploy_website:
     docker:
-      - image: circleci/python:2.7.18-buster-browsers-legacy
+      - image: circleci/python:2.7-browsers
     working_directory: ~/website
     steps:
       - attach_workspace:
