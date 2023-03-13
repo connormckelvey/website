@@ -1,0 +1,29 @@
+name: main
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.2'
+        bundler-cache: true
+    - name: build
+      run: make
+    - name: publish
+      env:
+        AWS_DEFAULT_REGION: us-west-2
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      shell: bash
+      run: |
+        find .
+        sudo apt-get install -y awscli
+        aws s3 sync ./build/ s3://www.connormckelvey.com/ --acl public-read
+  
+  
